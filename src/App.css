@@ -1,0 +1,32 @@
+:root {
+  --bg-color: #030014;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --primary-purple: #b466fc;
+  --secondary-purple: #7c3aed;
+  --text-main: #f8fafc;
+  --text-dim: #94a3b8;
+  --border-color: rgba(168, 85, 247, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+.section-title {
+  font-size: 2.6rem;
+  margin-bottom: 35px;
+}
+
+html {
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,157 @@
+.contact {
+    padding: 80px 10%;
+    color: white;
+}
+
+.contact-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.left-side,
+.right-side {
+    height: 70vh;
+    width: 35vw;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.left-side h3 {
+    font-size: 1.3rem;
+    color: var(--primary-purple);
+
+    margin-bottom: 20px;
+}
+
+.left-side p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    max-width: 22vw;
+}
+
+.info-item {
+    height: 12vh;
+    width: 18vw;
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+}
+
+
+.info-icon {
+    color: var(--primary-purple);
+    font-size: 25px;
+}
+
+.right-side input{
+    height: 6vh;
+    width: 18vw;
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+}
+.right-side textarea{
+    height: 20vh;
+    width: 18vw;
+    resize: none;
+    background-color: rgba(255, 255, 255, 0.05);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+}
+.right-side h2{
+   color: var(--primary-purple);
+   margin-bottom: 20px;
+}
+.send-btn{
+       padding: 10px 24px;
+    background: linear-gradient(90deg, var(--primary-purple) 0%, var(--secondary-purple) 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+    .contact {
+        padding: 60px 5%; /* Side padding thodi kam kar di */
+    }
+
+    .contact-wrapper {
+        flex-direction: column; /* Left aur Right side ek ke niche ek */
+        gap: 20px;
+    }
+
+    .left-side,
+    .right-side {
+        height: auto; /* vh hata kar auto kiya taaki content fit ho */
+        width: 100%; /* Poori screen ki width lega */
+        padding: 25px 15px;
+    }
+
+    .left-side p {
+        max-width: 100%; /* Mobile par text poori jagah lega */
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .info-item {
+        height: auto; /* Height auto taaki email wrap ho sake */
+        width: 100%; /* Boxes poori width ke honge */
+        min-height: 80px;
+        padding: 15px;
+        justify-content: flex-start; /* Items ko left se align kiya */
+        gap: 15px;
+    }
+
+    /* Email text wrap fix */
+    .info-item div {
+        overflow: hidden;
+        text-align: left;
+    }
+
+    .info-item p {
+        font-size: 0.9rem;
+        word-break: break-all; /* Lambi email ko tod dega */
+        margin-bottom: 0;
+    }
+
+    .right-side input,
+    .right-side textarea {
+        width: 100%; /* Form fields full width */
+        height: auto;
+    }
+
+    .right-side input {
+        padding: 12px;
+    }
+
+    .right-side textarea {
+        height: 150px; /* Textarea ki ek decent height fix kar di */
+    }
+
+    .send-btn {
+        width: 100%; /* Button mobile par full width zyada achha lagta hai */
+    }
+}
