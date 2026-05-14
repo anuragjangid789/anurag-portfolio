@@ -34,7 +34,7 @@ function Contact() {
                             <FaPhoneAlt className="info-icon" />
                             <div>
                                 <h4>Call Me</h4>
-                                <p>+91 12345 67890</p>
+                                <p>+91 87693 28060</p>
                             </div>
                         </div>
                     </div>
