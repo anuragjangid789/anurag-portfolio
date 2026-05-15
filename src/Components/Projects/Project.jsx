@@ -1,8 +1,20 @@
 import plantsavenue from "../../assets/plants-avenue-img.png";
 import fluxagency from "../../assets/flux-agency-img.png";
 import "./Projects.css";
+import { motion } from "framer-motion";
 
 function Projects() {
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
   const projectsData = [
     {
       id: 1,
@@ -23,12 +35,31 @@ function Projects() {
   ];
 
   return (
-    <section className="projects" id="projects">
-      <h2 className="section-title">My Projects</h2>
+    <motion.section
+      className="projects" id="projects"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false }}
+    >
+      <motion.h2
+        className="section-title"
+        variants={itemVariants}
+      >My Projects</motion.h2>
 
-      <div className="project-grid">
+      <motion.div
+        className="project-grid"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false }}
+      >
         {projectsData.map((project) => (
-          <div className="project-card" key={project.id}>
+          <motion.div
+            className="project-card"
+            key={project.id}
+            variants={itemVariants}
+          >
             <div className="project-image">
               <img src={project.image} alt={project.title} />
 
@@ -53,10 +84,10 @@ function Projects() {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 export default Projects;

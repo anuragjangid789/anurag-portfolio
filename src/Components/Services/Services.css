@@ -21,6 +21,12 @@
     text-align: center;
 }
 
+.service-card:hover {
+    border-color: var(--primary-purple);
+    background: rgba(168, 85, 247, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
 .service-icon svg {
     font-size: 3.5rem;
     margin-bottom: 20px;
@@ -39,13 +45,15 @@
 
 }
 
-@media (max-width:768px){
-    .services-wrapper{
+@media (max-width:768px) {
+    .services-wrapper {
         flex-direction: column;
     }
-    .service-card{
+
+    .service-card {
         width: 100%;
     }
+
     .service-card p {
         font-size: 1.1rem;
     }
