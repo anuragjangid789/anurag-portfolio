@@ -78,7 +78,7 @@ const About = () => {
                     variants={itemVarients}
                     >
                         <h3 className='resume-heading'>Interested in my work?</h3>
-                        <a href="/Anurag-Jangid-CV.pdf" className="about-cv-btn" download>
+                        <a href="/Anurag_jangid_Frontend_Developer_Resume.pdf" className="about-cv-btn" download>
                             Download Full CV
                         </a>
                     </motion.div>
