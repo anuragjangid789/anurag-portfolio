@@ -1,8 +1,22 @@
-import React from 'react';
-import { motion } from "framer-motion";
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import './About.css';
 
 const About = () => {
+    const sectionRef = useRef(null);
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start end", "end start"]
+    });
+
+    const smoothProgress = useSpring(scrollYProgress, {
+        stiffness: 80,
+        damping: 25,
+        restDelta: 0.001
+    });
+
+    const yLeft = useTransform(smoothProgress, [0, 1], [-25, 25]);
+    const yRight = useTransform(smoothProgress, [0, 1], [25, -25]);
 
     const containerVarients = {
         hidden: { opacity: 0 },
@@ -17,9 +31,10 @@ const About = () => {
     const itemVarients2 = {
         hidden: { opacity: 0, x: -30 },
         visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: "easeOut" } }
-    }
+    };
+
     return (
-        <section className="about" id="about">
+        <section className="about" id="about" ref={sectionRef}>
             <motion.div
                 className="container"
                 variants={containerVarients}
@@ -35,10 +50,10 @@ const About = () => {
                 </motion.h2>
 
                 <div className="grid-layout">
-
                     <motion.div 
-                    className="grid-items bio-box"
-                    variants={itemVarients2}
+                        className="grid-items bio-box"
+                        variants={itemVarients2}
+                        style={{ y: yLeft }}
                     >
                         <h3>Who I Am</h3>
                         <p>
@@ -48,10 +63,10 @@ const About = () => {
                         </p>
                     </motion.div>
 
-
                     <motion.div 
-                    className="grid-items tech-box"
-                    variants={itemVarients}
+                        className="grid-items tech-box"
+                        variants={itemVarients}
+                        style={{ y: yRight }}
                     >
                         <h3>Main Stack</h3>
                         <div className="tech-tags">
@@ -63,19 +78,19 @@ const About = () => {
                         </div>
                     </motion.div>
 
-
                     <motion.div 
-                    className="grid-items goal-box"
-                    variants={itemVarients2}
+                        className="grid-items goal-box"
+                        variants={itemVarients2}
+                        style={{ y: yLeft }}
                     >
                         <h3>Goal</h3>
-                        <p>Turning complex ideas into simple,<br /> functional  UI and user friendly experiences.</p>
+                        <p>Turning complex ideas into simple,<br /> functional UI and user friendly experiences.</p>
                     </motion.div>
 
-
                     <motion.div 
-                    className="grid-items   resume-box"
-                    variants={itemVarients}
+                        className="grid-items resume-box"
+                        variants={itemVarients}
+                        style={{ y: yRight }}
                     >
                         <h3 className='resume-heading'>Interested in my work?</h3>
                         <a href="/Anurag_jangid_Frontend_Developer_Resume.pdf" className="about-cv-btn" download>
