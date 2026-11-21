@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./Home.css";
-import img1 from "../../assets/IMG-1.png";
-import img2 from "../../assets/IMG-2.png";
+import img1 from "../../assets/IMG-1.webp";
+import img2 from "../../assets/IMG-2.webp";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import MagneticButton from "../Common/MagneticButton";
 import RollingText from "./RollingText";
