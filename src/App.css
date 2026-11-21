@@ -15,6 +15,41 @@
   box-sizing: border-box;
 }
 
+/* Custom Native Hardware Arrow Cursor from assets/cursor.png */
+html,
+body,
+* {
+  cursor: url('./assets/cursor-32.png') 0 0, auto;
+}
+
+a,
+button,
+[role="button"],
+[role="link"],
+input[type="button"],
+input[type="submit"],
+label,
+select,
+.magnetic-btn,
+.project-card,
+.skill-card,
+.timeline-card,
+.timeline-live-chip,
+.timeline-item,
+.bento-card,
+.nav-link,
+.footer-link,
+.social-chip,
+.btn-primary {
+  cursor: url('./assets/cursor-32.png') 0 0, pointer;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  cursor: text !important;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-main);
@@ -39,8 +74,9 @@ main {
   }
 }
 
-html, body {
-  overflow-x: hidden; 
+html,
+body {
+  overflow-x: hidden;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -74,8 +110,10 @@ html, body {
    HIGH PERFORMANCE MOBILE ACCELERATION (Fix Mobile Lag)
    ======================================================== */
 @media (max-width: 768px) {
+
   /* Native hardware momentum inertia scrolling */
-  html, body {
+  html,
+  body {
     -webkit-overflow-scrolling: touch;
     scroll-behavior: auto !important;
   }

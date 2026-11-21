@@ -93,7 +93,13 @@ const About = () => {
                         style={{ y: yRight }}
                     >
                         <h3 className='resume-heading'>Interested in my work?</h3>
-                        <a href="/Anurag_jangid_Frontend_Developer_Resume.pdf" className="about-cv-btn" download>
+                        <a 
+                            href="/Anurag_Resume.pdf" 
+                            className="about-cv-btn" 
+                            download="Anurag_Resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
                             Download Full CV
                         </a>
                     </motion.div>

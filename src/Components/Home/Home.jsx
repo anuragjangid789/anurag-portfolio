@@ -53,15 +53,18 @@ function Hero() {
   };
 
   const handleFaceMouseEnter = (e) => {
+    if (typeof window !== "undefined" && window.innerWidth <= 860) return;
     setIsFaceHovered(true);
     handleFaceMouseMove(e);
   };
 
   const handleFaceMouseLeave = () => {
+    if (typeof window !== "undefined" && window.innerWidth <= 860) return;
     setIsFaceHovered(false);
   };
 
   const handleFaceTouchMove = (e) => {
+    if (typeof window !== "undefined" && window.innerWidth <= 860) return;
     if (!e.touches || e.touches.length === 0) return;
     const touch = e.touches[0];
     const rect = e.currentTarget.getBoundingClientRect();

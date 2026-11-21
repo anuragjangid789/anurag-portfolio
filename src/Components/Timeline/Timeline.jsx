@@ -71,33 +71,136 @@ const milestones = [
 
 const TimelineItem = ({ item, index }) => {
   const isEven = index % 2 === 0;
+  const itemRef = useRef(null);
+
+  // Scroll progress for each individual milestone card
+  // Triggers exactly as the descending progress line runner reaches this node
+  const { scrollYProgress: itemProgress } = useScroll({
+    target: itemRef,
+    offset: ["start 70%", "start 46%"],
+  });
+
+  const smoothItem = useSpring(itemProgress, {
+    stiffness: 90,
+    damping: 24,
+    restDelta: 0.001,
+  });
+
+  // HIDE CARDS INITIALLY: Opacity stays strictly 0 until the progress bar reaches the node
+  const cardOpacity = useTransform(smoothItem, [0, 0.12, 0.75], [0, 0, 1]);
+  const cardY = useTransform(smoothItem, [0.08, 0.8], [32, 0]);
+  const cardScale = useTransform(smoothItem, [0.08, 0.8], [0.92, 1]);
+  const cardPointerEvents = useTransform(smoothItem, (v) => (v >= 0.2 ? "auto" : "none"));
+
+  const cardBorder = useTransform(
+    smoothItem,
+    [0, 0.2, 0.8, 1],
+    [
+      "rgba(168, 85, 247, 0)",
+      "rgba(168, 85, 247, 0.25)",
+      "rgba(168, 85, 247, 0.5)",
+      "rgba(34, 211, 238, 0.7)",
+    ]
+  );
+  const cardShadow = useTransform(
+    smoothItem,
+    [0, 0.2, 0.8, 1],
+    [
+      "0 0 0 rgba(0, 0, 0, 0)",
+      "0 10px 25px rgba(0, 0, 0, 0.3)",
+      "0 14px 35px rgba(0, 0, 0, 0.45)",
+      "0 18px 45px rgba(0, 0, 0, 0.5), 0 0 28px rgba(6, 182, 212, 0.25)",
+    ]
+  );
+
+  // Node and connector beam activation as progress line arrives
+  const connectorScaleX = useTransform(smoothItem, [0.05, 0.65], [0, 1]);
+  const connectorOpacity = useTransform(smoothItem, [0.02, 0.2], [0, 1]);
+
+  const nodeGlowOpacity = useTransform(smoothItem, [0, 0.2, 0.7, 1], [0, 0.3, 0.8, 1]);
+  const nodeCoreBorder = useTransform(
+    smoothItem,
+    [0, 0.2, 0.7, 1],
+    [
+      "rgba(168, 85, 247, 0.25)",
+      "rgba(168, 85, 247, 0.5)",
+      "rgba(34, 211, 238, 0.7)",
+      "#38bdf8",
+    ]
+  );
+  const nodeCoreShadow = useTransform(
+    smoothItem,
+    [0, 0.2, 0.7, 1],
+    [
+      "0 0 0px rgba(0, 0, 0, 0)",
+      "0 0 10px rgba(168, 85, 247, 0.3), inset 0 0 8px rgba(168, 85, 247, 0.2)",
+      "0 0 18px rgba(6, 182, 212, 0.55), inset 0 0 12px rgba(6, 182, 212, 0.25)",
+      "0 0 26px rgba(56, 189, 248, 0.8), inset 0 0 14px rgba(56, 189, 248, 0.4)",
+    ]
+  );
+  const nodeIconColor = useTransform(
+    smoothItem,
+    [0, 0.2, 0.7, 1],
+    [
+      "rgba(168, 85, 247, 0.4)",
+      "rgba(34, 211, 238, 0.7)",
+      "#22d3ee",
+      "#ffffff",
+    ]
+  );
 
   return (
-    <motion.div
+    <div
+      ref={itemRef}
       className={`timeline-item ${isEven ? "left" : "right"}`}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
     >
-      {/* Center cyber node with active energy ring */}
+      {/* Precision Cyber Node (Centered directly over rail) */}
+      <div className="timeline-node">
+        <motion.div
+          className="node-glow"
+          style={{ opacity: nodeGlowOpacity }}
+          aria-hidden="true"
+        />
+        <div className="node-outer-ring" aria-hidden="true" />
+        <motion.div
+          className="node-core-body"
+          style={{
+            borderColor: nodeCoreBorder,
+            boxShadow: nodeCoreShadow,
+          }}
+        >
+          <motion.span
+            className="node-icon"
+            style={{ color: nodeIconColor }}
+          >
+            {item.icon}
+          </motion.span>
+        </motion.div>
+      </div>
+
+      {/* Dynamic Cyber connector beam that extends as progress line arrives */}
       <motion.div
-        className="timeline-node"
-        whileHover={{ scale: 1.22 }}
-        transition={{ type: "spring", stiffness: 400, damping: 12 }}
-      >
-        <span className="node-icon">{item.icon}</span>
-        <div className="node-glow" />
-        <div className="node-pulse-ring" />
-      </motion.div>
+        className={`timeline-connector ${isEven ? "to-left" : "to-right"}`}
+        style={{
+          scaleX: connectorScaleX,
+          opacity: connectorOpacity,
+          transformOrigin: isEven ? "right center" : "left center",
+        }}
+      />
 
-      {/* Cyber connector beam between node and card */}
-      <div className={`timeline-connector ${isEven ? "to-left" : "to-right"}`} />
-
-      {/* Content Card with Glassmorphic styling */}
+      {/* Content Card with Glassmorphic styling - hidden until progress bar arrives */}
       <motion.div
         className="timeline-card"
-        whileHover={{ y: -6, boxShadow: "0 18px 40px rgba(168, 85, 247, 0.28)" }}
+        style={{
+          opacity: cardOpacity,
+          y: cardY,
+          scale: cardScale,
+          borderColor: cardBorder,
+          boxShadow: cardShadow,
+          pointerEvents: cardPointerEvents,
+          transformOrigin: isEven ? "right center" : "left center",
+        }}
+        whileHover={{ y: -6, boxShadow: "0 18px 45px rgba(168, 85, 247, 0.4), 0 0 25px rgba(6, 182, 212, 0.25)" }}
         transition={{ duration: 0.3 }}
       >
         <div className="card-header">
@@ -150,7 +253,7 @@ const TimelineItem = ({ item, index }) => {
           ))}
         </div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -158,12 +261,12 @@ const Timeline = () => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 65%", "end 65%"],
+    offset: ["start 70%", "end 70%"],
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 90,
-    damping: 28,
+    damping: 26,
     restDelta: 0.001,
   });
 
@@ -172,7 +275,7 @@ const Timeline = () => {
   const runnerOpacity = useTransform(smoothProgress, [0, 0.03, 0.98, 1], [0, 1, 1, 0.6]);
 
   return (
-    <section className="timeline-section" id="timeline" ref={containerRef}>
+    <section className="timeline-section" id="timeline">
       <motion.div
         className="timeline-header"
         initial={{ opacity: 0, y: 30 }}
@@ -192,7 +295,7 @@ const Timeline = () => {
         </p>
       </motion.div>
 
-      <div className="timeline-container">
+      <div className="timeline-container" ref={containerRef}>
         {/* Redesigned High-Tech Vertical Progress Conduit */}
         <div className="timeline-conduit" aria-hidden="true">
           {/* Top Origin Terminal */}

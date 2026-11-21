@@ -4,7 +4,6 @@ import 'lenis/dist/lenis.css';
 import './App.css';
 
 import ParallaxBackground from "./Components/Common/ParallaxBackground";
-import CustomCursor from "./Components/Common/CustomCursor";
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Components/Home/Home";
 import About from "./Components/About/About";
@@ -17,6 +16,20 @@ import Footer from "./Components/Footer/Footer";
 
 function App() {
   useEffect(() => {
+    // Force browser to always return to Home page (top) on reload
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+
+    const handleBeforeUnload = () => {
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
     // Only enable Lenis virtual smooth scrolling on desktop devices with fine pointers (mouse wheel).
     // Touch/mobile devices have native hardware momentum inertia scrolling that must never be intercepted.
     const isTouchOrMobile =
@@ -26,7 +39,9 @@ function App() {
         window.innerWidth <= 768);
 
     if (isTouchOrMobile) {
-      return;
+      return () => {
+        window.removeEventListener("beforeunload", handleBeforeUnload);
+      };
     }
 
     const lenis = new Lenis({
@@ -35,6 +50,8 @@ function App() {
       smoothWheel: true,
       syncTouch: false,
     });
+
+    lenis.scrollTo(0, { immediate: true });
 
     let animationFrameId;
 
@@ -46,6 +63,7 @@ function App() {
     animationFrameId = requestAnimationFrame(raf);
 
     return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
       cancelAnimationFrame(animationFrameId);
       lenis.destroy();
     };
@@ -54,7 +72,6 @@ function App() {
   return (
     <>
       <ParallaxBackground />
-      <CustomCursor />
       <Navbar />
       <main>
         <Home />

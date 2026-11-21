@@ -63,8 +63,11 @@ const Navbar = () => {
           <motion.li variants={itemVariants}><a href="#contact" onClick={toggleMenu}>Contact</a></motion.li>
           <li className="mobile-resume-li">
             <a 
-              href="#contact" 
+              href="/Anurag_Resume.pdf" 
               className="mobile-resume-btn"
+              download="Anurag_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={toggleMenu}
             >
               <FaFileDownload className="resume-icon" />
@@ -76,8 +79,11 @@ const Navbar = () => {
         <div className="nav-action">
           <MagneticButton strength={0.25}>
             <a 
-              href="#contact" 
+              href="/Anurag_Resume.pdf" 
               className="nav-resume-btn"
+              download="Anurag_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <FaFileDownload className="resume-icon" />
               <span>Resume</span>

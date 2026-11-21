@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import plantsavenue from "../../assets/plants-avenue-img.png";
 import fluxagency from "../../assets/flux-agency-img.png";
+import snapivite from "../../assets/snapivite.webp";
+import aanandam from "../../assets/aanandam.webp";
 import "./Projects.css";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
@@ -9,6 +11,26 @@ import MagneticButton from "../Common/MagneticButton";
 const projectsData = [
   {
     id: 1,
+    title: "Snapivite",
+    subtitle: "Interactive Digital Invitations",
+    desc: "A modern, interactive digital invitation web platform featuring bespoke micro-animations, event countdowns, dynamic schedules, and mobile-first responsiveness.",
+    tech: ["React.js", "Framer Motion", "Tailwind CSS", "Vercel"],
+    image: snapivite,
+    liveLink: "https://snapivite.vercel.app/",
+    githubLink: "https://github.com/",
+  },
+  {
+    id: 2,
+    title: "Aanandam",
+    subtitle: "Luxury Wedding & Event Experience",
+    desc: "An elegant, bespoke digital wedding invitation web application crafted with fluid transitions, ambient audio, itinerary navigation, and interactive RSVP flows.",
+    tech: ["React.js", "Modern CSS & Grid", "Interactive UI", "Vercel"],
+    image: aanandam,
+    liveLink: "https://aanandam.vercel.app/",
+    githubLink: "https://github.com/",
+  },
+  {
+    id: 3,
     title: "Plants Avenue",
     subtitle: "E-Commerce Plant Haven",
     desc: "A responsive e-commerce web platform for selling plants and botanical supplies. Features dynamic catalog filtering, cart interactions, and high-performance UI components.",
@@ -18,7 +40,7 @@ const projectsData = [
     githubLink: "https://github.com/",
   },
   {
-    id: 2,
+    id: 4,
     title: "Flux Agency",
     subtitle: "Creative Digital Services Agency",
     desc: "A sleek modern agency portfolio showcasing core services like SEO, Web Design, and Marketing through interactive animations and optimized conversion funnels.",

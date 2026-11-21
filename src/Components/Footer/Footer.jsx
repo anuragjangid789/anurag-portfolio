@@ -85,12 +85,6 @@ function Footer() {
             real business results
           </motion.h2>
 
-          {/* Scarcity / Availability tag */}
-          <motion.div className="footer-availability" variants={itemVariants}>
-            <span className="availability-fire">🔥</span>
-            <span>3 spots remaining this month</span>
-          </motion.div>
-
           {/* Book a Free Call CTA Pill Button */}
           <motion.div className="footer-cta-wrap" variants={itemVariants}>
             <MagneticButton strength={0.3}>
