@@ -1,52 +1,71 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { FaGraduationCap, FaBriefcase, FaCode, FaRocket } from "react-icons/fa";
+import { FaBriefcase, FaCode, FaRocket, FaExternalLinkAlt } from "react-icons/fa";
 import "./Timeline.css";
 
 const milestones = [
   {
     id: 1,
-    role: "Frontend Developer & UI Specialist",
-    organization: "Independent & Open Source",
-    period: "2024 - Present",
-    type: "work",
+    role: "Web Developer",
+    period: "Sept 2026 – Present",
+    category: "Production Web Applications",
     icon: <FaRocket />,
-    description:
-      "Architecting interactive, high-speed single page applications using React, Vite, Framer Motion, and Tailwind. Obsessed with micro-interactions, responsive fluidity, and buttery 60fps animations.",
-    skills: ["React 19", "Vite", "Framer Motion", "Lenis", "Tailwind CSS"],
+    points: [
+      "Designed and developed multiple interactive wedding invitation websites featuring custom animations, dynamic countdowns, event timelines, and mobile-first responsiveness.",
+      "Translated design requirements and wireframes into smooth, high-performance frontend experiences across desktop and mobile viewports.",
+      "Collaborated with team members to debug UI issues, optimize asset loading and rendering performance, and deploy updates smoothly.",
+      "Maintained consistent code quality, version control workflows, and cross-browser compatibility across live production pages.",
+    ],
+    liveLinks: [
+      { name: "snapivite.vercel.app", url: "https://snapivite.vercel.app" },
+      { name: "aanandam.vercel.app", url: "https://aanandam.vercel.app" },
+    ],
+    skills: [
+      "React.js",
+      "Interactive Animations",
+      "Event Timelines & Countdowns",
+      "Mobile-First UI",
+      "Cross-Browser Optimization",
+      "Vercel Deployment",
+    ],
   },
   {
     id: 2,
-    role: "Freelance Web Developer",
-    organization: "Client Projects & Creative Studios",
-    period: "2023 - 2024",
-    type: "work",
+    role: "Creative Frontend Developer Intern",
+    period: "June 2026 – Aug 2026",
+    category: "Interactive Digital Invitations",
     icon: <FaBriefcase />,
-    description:
-      "Delivered production-ready landing pages and web apps including Plants Avenue and Flux Agency. Elevated conversion rates through streamlined user flows and polished responsive interfaces.",
-    skills: ["React", "JavaScript (ES6+)", "UI/UX Design", "Performance"],
+    points: [
+      "Developed responsive, interactive digital invitation web applications for weddings, engagements, and birthdays using modern frontend technologies.",
+      "Translated UI designs and wireframes into clean, scalable frontend code while ensuring cross-browser compatibility and optimal user experience.",
+      "Collaborated closely with the product team to build reusable UI components and maintain high standards of code security, structure, and performance.",
+    ],
+    skills: [
+      "Frontend Architecture",
+      "Responsive Layouts",
+      "Micro-Interactions",
+      "Component Reusability",
+      "UI Performance",
+    ],
   },
   {
     id: 3,
-    role: "Full-Stack Project Development",
-    organization: "Self-Directed Engineering",
-    period: "2022 - 2023",
-    type: "project",
+    role: "Freelance / Personal Projects",
+    period: "Jan 2026 – May 2026",
+    category: "React Web Apps & UI Systems",
     icon: <FaCode />,
-    description:
-      "Built and deployed scalable web projects experimenting with state management, RESTful APIs, CSS3 design systems, and component architecture.",
-    skills: ["JavaScript", "HTML5/CSS3", "REST APIs", "Git/GitHub"],
-  },
-  {
-    id: 4,
-    role: "Computer Science & Engineering",
-    organization: "Higher Education",
-    period: "2020 - 2024",
-    type: "education",
-    icon: <FaGraduationCap />,
-    description:
-      "Deepened foundational knowledge in data structures, algorithms, object-oriented design, web technologies, and software engineering methodologies.",
-    skills: ["Data Structures", "Algorithms", "Software Engineering", "Web Architecture"],
+    points: [
+      "Built several websites using React JS that work smoothly and responsively across both mobile and desktop viewports.",
+      "Created reusable UI components and modular design tokens to ensure a clean, modern, and consistent aesthetic across the entire application.",
+      "Implemented engaging features including dynamic product sections, bespoke UI animations, responsive grids, and fluid layout transitions.",
+    ],
+    skills: [
+      "React.js",
+      "Modern CSS & Grid",
+      "Reusable UI Systems",
+      "Framer Motion",
+      "Responsive Design",
+    ],
   },
 ];
 
@@ -58,7 +77,7 @@ const TimelineItem = ({ item, index }) => {
       className={`timeline-item ${isEven ? "left" : "right"}`}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
     >
       {/* Center cyber node with active energy ring */}
@@ -82,11 +101,47 @@ const TimelineItem = ({ item, index }) => {
         transition={{ duration: 0.3 }}
       >
         <div className="card-header">
-          <span className="timeline-badge">{item.period}</span>
-          <span className="timeline-org">{item.organization}</span>
+          <div className="timeline-badge-wrap">
+            <span className="timeline-badge">{item.period}</span>
+            {item.category && <span className="timeline-category-tag">{item.category}</span>}
+          </div>
         </div>
+
         <h3 className="timeline-title">{item.role}</h3>
-        <p className="timeline-desc">{item.description}</p>
+
+        {/* Enhanced Bullet Points matching Reference Image */}
+        <ul className="timeline-points-list">
+          {item.points.map((point, pIdx) => (
+            <li key={pIdx} className="timeline-point-item">
+              <span className="point-bullet" />
+              <span className="point-text">{point}</span>
+            </li>
+          ))}
+        </ul>
+
+        {/* Core Live Web Applications */}
+        {item.liveLinks && item.liveLinks.length > 0 && (
+          <div className="timeline-live-section">
+            <span className="live-section-label">Live Web Applications</span>
+            <div className="live-chips-container">
+              {item.liveLinks.map((linkItem, lIdx) => (
+                <a
+                  key={lIdx}
+                  href={linkItem.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="timeline-live-chip"
+                >
+                  <span className="live-status-dot" />
+                  <span className="live-link-text">{linkItem.name}</span>
+                  <FaExternalLinkAlt className="live-link-icon" />
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Technical Competencies Tags */}
         <div className="timeline-tags">
           {item.skills.map((skill, idx) => (
             <span key={idx} className="timeline-tag">
@@ -122,18 +177,18 @@ const Timeline = () => {
         className="timeline-header"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
         <div className="timeline-eyebrow">
           <span className="eyebrow-pip" />
-          <span>Career Path & Milestones</span>
+          <span>Work Experience & Milestones</span>
         </div>
         <h2 className="section-title">
-          Experience <span className="gradient-accent">&</span> Milestones
+          Experience <span className="gradient-accent">&</span> Journey
         </h2>
         <p className="section-subtitle">
-          A chronicle of my professional evolution, technical learning, and engineering track record.
+          Demonstrated frontend engineering track record building interactive, production-ready web applications with modern frontend architectures.
         </p>
       </motion.div>
 

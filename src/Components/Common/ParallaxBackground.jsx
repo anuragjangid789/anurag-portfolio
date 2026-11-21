@@ -1,8 +1,22 @@
-import { useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import "./ParallaxBackground.css";
 
 const ParallaxBackground = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(
+        window.innerWidth <= 768 ||
+        ("ontouchstart" in window && window.innerWidth <= 1024)
+      );
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const { scrollY } = useScroll();
 
   // Smooth spring physics for parallax scroll values
@@ -23,6 +37,11 @@ const ParallaxBackground = () => {
 
   // Layer 3: Faster foreground floating particles (0.38x scroll)
   const yStars = useTransform(smoothScroll, (v) => v * 0.38);
+
+  // Disable GPU-heavy moving blur layers on mobile screens to preserve 60/120fps scrolling
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <div className="parallax-bg-root" aria-hidden="true">

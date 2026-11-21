@@ -32,6 +32,13 @@ main {
   margin-bottom: 25px;
 }
 
+@media (max-width: 768px) {
+  .section-title {
+    font-size: clamp(1.9rem, 7vw, 2.3rem);
+    margin-bottom: 18px;
+  }
+}
+
 html, body {
   overflow-x: hidden; 
   width: 100%;
@@ -61,4 +68,69 @@ html, body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(6, 182, 212, 0.6);
+}
+
+/* ========================================================
+   HIGH PERFORMANCE MOBILE ACCELERATION (Fix Mobile Lag)
+   ======================================================== */
+@media (max-width: 768px) {
+  /* Native hardware momentum inertia scrolling */
+  html, body {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto !important;
+  }
+
+  /* Replace GPU-intensive backdrop-filter blur passes with solid, dark cyber surfaces */
+  .skill-card-modern,
+  .pillar-card,
+  .method-card,
+  .form-glass-card,
+  .timeline-card,
+  .service-card-modern,
+  .project-card-modern,
+  .about-card,
+  .social-hub-card,
+  .pillars-wrapper,
+  .status-pill-card,
+  .workflow-step-card,
+  .footer-cta-card,
+  .category-filter-bar {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(14, 8, 38, 0.94) !important;
+  }
+
+  /* Disable ultra-heavy multi-hundred-pixel blur filter glows on mobile */
+  .contact-glow,
+  .skills-ambient-glow,
+  .services-ambient-glow,
+  .projects-ambient-glow,
+  .footer-ambient-nebula,
+  .hero-aura-glow,
+  .timeline-glow-channel {
+    display: none !important;
+  }
+
+  /* Disable continuous multi-axis scroll transforms and expensive infinite animations */
+  .home-content,
+  .about-content,
+  .skills-shell,
+  .services-shell,
+  .projects-shell,
+  .contact-info-col,
+  .contact-form-col {
+    transform: none !important;
+  }
+
+  /* Disable infinite pulsating rings and ripple loops offscreen on mobile */
+  .runner-wave-pulse,
+  .node-pulse-ring,
+  .terminal-aura {
+    animation: none !important;
+  }
+
+  /* Prevent spotlight lens from intercepting touch scroll events over Hero face */
+  .hero-face-container {
+    pointer-events: none;
+  }
 }

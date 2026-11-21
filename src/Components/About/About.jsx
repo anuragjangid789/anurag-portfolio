@@ -40,7 +40,7 @@ const About = () => {
                 variants={containerVarients}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{once: false}}
+                viewport={{ once: true, amount: 0.15 }}
             >
                 <motion.h2
                     className="section-title"

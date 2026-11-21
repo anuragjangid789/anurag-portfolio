@@ -740,32 +740,58 @@
 @media (max-width: 1024px) {
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 2.8rem;
+    gap: 2.2rem;
   }
 
-  .contact-info-col {
-    max-width: 680px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
+  .contact-info-col,
   .contact-form-col {
     max-width: 680px;
     margin: 0 auto;
+    width: 100%;
+    transform: none !important; /* Neutralize split parallax on stacked layout */
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .contact-redesign {
-    padding: 80px 5% 90px 5%;
+    padding: 70px 4.5% 80px 4.5%;
+    overflow-x: clip;
+  }
+
+  .contact-header {
+    margin-bottom: 2.4rem;
+  }
+
+  .contact-badge {
+    padding: 5px 13px;
+    font-size: 0.78rem;
+    margin-bottom: 0.9rem;
   }
 
   .contact-main-heading {
-    font-size: 2.3rem;
+    font-size: clamp(2rem, 7.2vw, 2.5rem);
+    letter-spacing: -0.5px;
+    margin-bottom: 0.9rem;
   }
 
   .contact-intro {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding: 0 5px;
+  }
+
+  .status-pill-card {
+    padding: 13px 16px;
+    border-radius: 16px;
+    gap: 12px;
+  }
+
+  .status-text strong {
+    font-size: 0.92rem;
+  }
+
+  .status-text span {
+    font-size: 0.8rem;
   }
 
   .form-glass-card {
@@ -773,21 +799,254 @@
     border-radius: 22px;
   }
 
+  .form-card-header {
+    margin-bottom: 20px;
+  }
+
+  .form-title {
+    font-size: 1.55rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.88rem;
+  }
+
   .form-input-row {
     grid-template-columns: 1fr;
+    gap: 14px;
   }
 
   .method-card {
     padding: 14px 16px;
+    border-radius: 18px;
+    gap: 14px;
   }
 
   .method-icon-wrap {
-    width: 40px;
-    height: 40px;
-    font-size: 1.1rem;
+    width: 42px;
+    height: 42px;
+    font-size: 1.15rem;
+    border-radius: 12px;
+  }
+
+  .method-label {
+    font-size: 0.75rem;
   }
 
   .method-val {
     font-size: 0.92rem;
+  }
+
+  .social-hub-card {
+    padding: 18px 16px;
+    border-radius: 18px;
+  }
+
+  .social-hub-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .social-hub-btn {
+    justify-content: center;
+    padding: 8px 6px;
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+
+  .service-tags-wrap {
+    gap: 6px;
+  }
+
+  .service-tag-pill {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-redesign {
+    padding: 55px 3.5% 65px 3.5%;
+  }
+
+  .contact-header {
+    margin-bottom: 2rem;
+  }
+
+  .contact-main-heading {
+    font-size: clamp(1.75rem, 6.8vw, 2.15rem);
+    line-height: 1.2;
+  }
+
+  .contact-intro {
+    font-size: 0.88rem;
+    line-height: 1.52;
+  }
+
+  .status-pill-card {
+    padding: 11px 14px;
+    border-radius: 14px;
+    gap: 10px;
+  }
+
+  .status-text strong {
+    font-size: 0.88rem;
+  }
+
+  .status-text span {
+    font-size: 0.76rem;
+  }
+
+  .contact-methods {
+    gap: 0.75rem;
+  }
+
+  .method-card {
+    padding: 12px 14px;
+    border-radius: 15px;
+    gap: 10px;
+  }
+
+  .method-icon-wrap {
+    width: 38px;
+    height: 38px;
+    font-size: 1.05rem;
+    border-radius: 10px;
+  }
+
+  .method-label {
+    font-size: 0.7rem;
+    margin-bottom: 1px;
+  }
+
+  .method-val {
+    font-size: 0.85rem;
+  }
+
+  .method-val-static {
+    font-size: 0.85rem;
+  }
+
+  .copy-btn,
+  .whatsapp-quick-btn {
+    padding: 5px 10px;
+    font-size: 0.74rem;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .timezone-tag {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+    flex-shrink: 0;
+  }
+
+  .social-hub-card {
+    padding: 16px 14px;
+    border-radius: 16px;
+  }
+
+  .social-hub-title {
+    font-size: 0.76rem;
+    margin-bottom: 10px;
+  }
+
+  .social-hub-links {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .social-hub-btn {
+    padding: 7px 4px;
+    font-size: 0.75rem;
+    gap: 5px;
+  }
+
+  .form-glass-card {
+    padding: 20px 14px;
+    border-radius: 18px;
+  }
+
+  .form-title {
+    font-size: 1.35rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.82rem;
+  }
+
+  .input-group-label {
+    font-size: 0.8rem;
+    margin-bottom: 6px;
+  }
+
+  .service-tag-pill {
+    padding: 5px 10px;
+    font-size: 0.74rem;
+  }
+
+  /* Prevent iOS automatic input zooming by using 16px base font size */
+  .input-wrapper input {
+    padding: 12px 14px 12px 40px;
+    font-size: 16px;
+  }
+
+  .input-wrapper textarea {
+    padding: 12px 14px 12px 40px;
+    font-size: 16px;
+    min-height: 95px;
+  }
+
+  .input-field-icon {
+    left: 13px;
+    font-size: 0.85rem;
+  }
+
+  .contact-submit-btn {
+    padding: 13px 20px;
+    font-size: 0.95rem;
+    min-height: 48px;
+  }
+
+  .form-success-state {
+    padding: 24px 10px;
+    gap: 12px;
+  }
+
+  .success-icon-ring {
+    width: 60px;
+    height: 60px;
+    font-size: 1.6rem;
+  }
+
+  .form-success-state h4 {
+    font-size: 1.4rem;
+  }
+
+  .form-success-state p {
+    font-size: 0.86rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .method-card {
+    flex-wrap: wrap;
+    gap: 8px 10px;
+  }
+
+  .method-card .copy-btn,
+  .method-card .whatsapp-quick-btn,
+  .method-card .timezone-tag {
+    margin-left: auto;
+  }
+
+  .social-hub-links {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .social-hub-btn {
+    padding: 8px 12px;
   }
 }

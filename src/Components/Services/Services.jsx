@@ -155,7 +155,7 @@ function Services() {
             className="services-eyebrow"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             <span className="eyebrow-dot" />
@@ -166,7 +166,7 @@ function Services() {
             className="services-title"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
             Services <span className="gradient-accent">&</span> Solutions
@@ -176,7 +176,7 @@ function Services() {
             className="services-subtitle"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
             Translating complex product requirements into high-speed, scalable web
@@ -190,7 +190,7 @@ function Services() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.15 }}
+          viewport={{ once: true, amount: 0.15 }}
           style={{ y: yParallax }}
         >
           {SERVICES_DATA.map((service) => (
@@ -272,7 +272,7 @@ function Services() {
                 className="workflow-step-card"
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.6, delay: idx * 0.12 }}
                 whileHover={{ y: -6 }}
               >

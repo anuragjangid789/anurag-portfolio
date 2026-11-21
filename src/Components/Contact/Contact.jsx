@@ -104,7 +104,7 @@ function Contact() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.15 }}
       >
         {/* Section Header */}
         <div className="contact-header">

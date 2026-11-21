@@ -33,7 +33,7 @@
 .grid-layout {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 200px);
+    grid-template-rows: auto;
     gap: 20px;
 }
 
@@ -46,6 +46,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-height: 180px;
 }
 
 .grid-items:hover {
@@ -55,10 +56,8 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-
 .bio-box {
     grid-column: span 2;
-   
 }
 
 .tech-box {
@@ -78,7 +77,6 @@
     justify-content: space-between;
 }
 
-
 .grid-items h3 {
     color: var(--primary-purple);
     margin-bottom: 15px;
@@ -87,8 +85,8 @@
 
 .grid-items p {
     color: var(--text-dim);
-    font-size: 1.2rem;
-    line-height: 1.5;
+    font-size: 1.15rem;
+    line-height: 1.6;
 }
 
 .resume-heading {
@@ -107,7 +105,6 @@
     background: rgba(168, 85, 247, 0.1);
     padding: 5px 12px;
     border-radius: 8px;
- 
 }
 
 .about-cv-btn {
@@ -123,13 +120,77 @@
     text-decoration: none;
 }
 
+/* ========================================================
+   TABLET RESPONSIVE LAYOUT (Fix Overlapping & Clipping)
+   ======================================================== */
+@media (max-width: 1024px) {
+    .about {
+        padding: 85px 6% 85px 6%;
+    }
 
+    .grid-layout {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        gap: 18px;
+    }
 
+    .bio-box {
+        grid-column: span 2;
+    }
 
-@media (max-width: 768px) {
+    .tech-box {
+        grid-column: span 1;
+    }
+
+    .goal-box {
+        grid-column: span 1;
+        text-align: left;
+    }
+
+    .resume-box {
+        grid-column: span 2;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 26px 30px;
+    }
+
+    .grid-items {
+        padding: 26px 24px;
+        min-height: auto;
+        transform: none !important;
+    }
+
+    .grid-items h3 {
+        font-size: 1.25rem;
+        margin-bottom: 12px;
+    }
+
+    .grid-items p {
+        font-size: 1.05rem;
+        line-height: 1.6;
+    }
+
+    .about-cv-btn {
+        padding: 10px 22px;
+        font-size: 0.98rem;
+        white-space: nowrap;
+    }
+}
+
+/* ========================================================
+   MOBILE RESPONSIVE LAYOUT
+   ======================================================== */
+@media (max-width: 650px) {
+    .about {
+        padding: 70px 4.5% 75px 4.5%;
+    }
+
     .grid-layout {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
+        gap: 14px;
     }
 
     .bio-box,
@@ -138,13 +199,57 @@
     .resume-box {
         grid-column: span 1;
     }
+
+    .grid-items {
+        padding: 22px 18px;
+    }
+
     .grid-items h3 {
-        font-size: 1.6rem;
+        font-size: 1.25rem;
+        margin-bottom: 10px;
     }
+
     .grid-items p {
-        font-size: 1.3rem;
+        font-size: 0.96rem;
+        line-height: 1.55;
     }
-    .about-cv-btn{
-        padding: 10px 30px;
+
+    .tech-tags {
+        gap: 8px;
+    }
+
+    .tech-tags span {
+        font-size: 0.82rem;
+        padding: 4px 10px;
+    }
+
+    .resume-box {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+        align-items: center;
+        padding: 22px 18px;
+    }
+
+    .resume-heading {
+        font-size: 1.2rem;
+    }
+
+    .about-cv-btn {
+        width: 100%;
+        max-width: 260px;
+        padding: 11px 24px;
+        font-size: 0.95rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .about {
+        padding: 55px 3.5% 65px 3.5%;
+    }
+
+    .grid-items {
+        padding: 18px 15px;
     }
 }

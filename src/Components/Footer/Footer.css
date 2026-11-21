@@ -344,36 +344,91 @@
    ======================================================== */
 @media (max-width: 868px) {
   .footer-redesign {
-    padding: 80px 5% 30px 5%;
+    padding: 70px 5% 25px 5%;
     min-height: auto;
   }
 
   .footer-headline {
-    font-size: 2.2rem;
-    letter-spacing: -0.6px;
+    font-size: clamp(1.9rem, 6.5vw, 2.6rem);
+    letter-spacing: -0.8px;
+    margin-bottom: 1rem;
+  }
+
+  .footer-availability {
+    font-size: 0.9rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .footer-call-btn {
+    padding: 11px 14px 11px 24px;
+    font-size: 0.96rem;
+  }
+
+  .btn-arrow-bubble {
+    width: 34px;
+    height: 34px;
+  }
+
+  .footer-name-monolith-wrap {
+    margin-top: 1.5rem;
+    margin-bottom: -0.6rem;
   }
 
   .footer-name-monolith {
-    font-size: clamp(4rem, 21vw, 8.5rem);
-    line-height: 0.9;
+    font-size: clamp(3.6rem, 19vw, 8.5rem);
+    line-height: 0.85;
   }
 
   .footer-bottom-bar {
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 1.2rem;
     padding-top: 1.5rem;
+    text-align: center;
   }
 
   .footer-meta-info {
     order: 3;
+    gap: 4px;
   }
 
   .footer-social-circles {
     order: 1;
+    gap: 10px;
+  }
+
+  .social-circle-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 
   .footer-top-scroll {
     order: 2;
+  }
+
+  .scroll-top-btn {
+    padding: 7px 16px;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-redesign {
+    padding: 60px 4% 20px 4%;
+  }
+
+  .footer-name-monolith {
+    font-size: clamp(3rem, 18vw, 4.6rem);
+  }
+
+  .location-pill {
+    font-size: 0.76rem;
+    padding: 3px 10px;
+  }
+
+  .copyright-text {
+    font-size: 0.72rem;
   }
 }

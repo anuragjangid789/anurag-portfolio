@@ -433,14 +433,21 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 0.8rem;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.timeline-badge-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
 }
 
 .timeline-badge {
   font-size: 0.82rem;
   font-weight: 700;
-  padding: 0.3rem 0.8rem;
+  padding: 0.32rem 0.85rem;
   border-radius: 20px;
   background: rgba(168, 85, 247, 0.15);
   color: #c084fc;
@@ -448,26 +455,138 @@
   letter-spacing: 0.5px;
 }
 
-.timeline-org {
-  font-size: 0.88rem;
+.timeline-category-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
   color: #94a3b8;
-  font-weight: 500;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  letter-spacing: 0.3px;
 }
 
 .timeline-title {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #f8fafc;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.2px;
 }
 
-.timeline-desc {
+/* --------------------------------------------------------
+   POINTS LIST (Matching reference image structure)
+   -------------------------------------------------------- */
+.timeline-points-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.timeline-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.92rem;
   color: #cbd5e1;
-  font-size: 0.96rem;
-  line-height: 1.6;
-  margin-bottom: 1.2rem;
+  line-height: 1.58;
 }
 
+.point-bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #06b6d4;
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.7);
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.point-text {
+  flex: 1;
+}
+
+/* --------------------------------------------------------
+   LIVE WEB APPLICATION CHIPS
+   -------------------------------------------------------- */
+.timeline-live-section {
+  margin-bottom: 1.25rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 12px;
+  background: rgba(6, 182, 212, 0.04);
+  border: 1px solid rgba(6, 182, 212, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.live-section-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+  color: #22d3ee;
+}
+
+.live-chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.timeline-live-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.38rem 0.85rem;
+  border-radius: 8px;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  color: #e0f2fe;
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-live-chip:hover {
+  background: rgba(6, 182, 212, 0.22);
+  border-color: #22d3ee;
+  color: #ffffff;
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.35);
+  transform: translateY(-2px);
+}
+
+.live-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+}
+
+.live-link-text {
+  letter-spacing: 0.2px;
+}
+
+.live-link-icon {
+  font-size: 0.68rem;
+  color: #22d3ee;
+  opacity: 0.8;
+  transition: transform 0.2s ease;
+}
+
+.timeline-live-chip:hover .live-link-icon {
+  transform: translate(1px, -1px);
+  opacity: 1;
+}
+
+/* --------------------------------------------------------
+   TECH TAGS
+   -------------------------------------------------------- */
 .timeline-tags {
   display: flex;
   flex-wrap: wrap;
@@ -485,28 +604,145 @@
 
 /* Responsive adjustment for tablets & mobile */
 @media (max-width: 868px) {
+  .timeline-section {
+    padding: 70px 5% 75px 5%;
+  }
+
+  .timeline-header {
+    margin-bottom: 3rem;
+  }
+
+  .timeline-header .section-title {
+    font-size: clamp(1.9rem, 7vw, 2.4rem);
+  }
+
+  .timeline-section-subtitle {
+    font-size: 0.96rem;
+  }
+
+  .timeline-container {
+    padding: 1.5rem 0 2.5rem 0;
+  }
+
   .timeline-conduit {
-    left: 28px;
+    left: 22px;
     transform: none;
+  }
+
+  .timeline-items {
+    gap: 2.8rem;
   }
 
   .timeline-item.left,
   .timeline-item.right {
-    padding-left: 70px;
+    padding-left: 58px;
     padding-right: 0;
     justify-content: flex-start;
   }
 
   .timeline-node {
-    left: 28px;
+    left: 22px;
+    width: 42px;
+    height: 42px;
     transform: translate(-50%, -50%);
+  }
+
+  .node-icon {
+    font-size: 1.05rem;
   }
 
   .timeline-connector.to-left,
   .timeline-connector.to-right {
-    left: 28px;
+    left: 22px;
     right: auto;
-    width: 42px;
+    width: 36px;
     background: linear-gradient(90deg, rgba(6, 182, 212, 0.8), rgba(168, 85, 247, 0.4));
+  }
+
+  .timeline-card {
+    padding: 1.4rem 1.25rem;
+  }
+
+  .timeline-title {
+    font-size: 1.2rem;
+  }
+
+  .timeline-point-item {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-section {
+    padding: 60px 3.5% 65px 3.5%;
+  }
+
+  .timeline-conduit {
+    left: 16px;
+  }
+
+  .timeline-node {
+    left: 16px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .node-icon {
+    font-size: 0.95rem;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    padding-left: 46px;
+  }
+
+  .timeline-connector.to-left,
+  .timeline-connector.to-right {
+    left: 16px;
+    width: 30px;
+  }
+
+  .timeline-card {
+    padding: 1.15rem 1rem;
+    border-radius: 14px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .timeline-badge {
+    font-size: 0.74rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .timeline-category-tag {
+    font-size: 0.72rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .timeline-title {
+    font-size: 1.1rem;
+  }
+
+  .timeline-points-list {
+    gap: 0.6rem;
+  }
+
+  .timeline-point-item {
+    font-size: 0.84rem;
+    line-height: 1.46;
+  }
+
+  .timeline-live-section {
+    padding: 0.75rem 0.85rem;
+  }
+
+  .timeline-live-chip {
+    font-size: 0.76rem;
+    padding: 0.3rem 0.65rem;
   }
 }

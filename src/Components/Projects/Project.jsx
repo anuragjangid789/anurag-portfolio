@@ -114,7 +114,7 @@ function Projects() {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.15 }}
     >
       <div className="projects-header">
         <motion.h2 className="section-title" variants={itemVariants}>

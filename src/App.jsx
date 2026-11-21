@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
 import Lenis from 'lenis';
+import { useEffect } from 'react';
 import 'lenis/dist/lenis.css';
 import './App.css';
 
@@ -17,11 +17,23 @@ import Footer from "./Components/Footer/Footer";
 
 function App() {
   useEffect(() => {
+    // Only enable Lenis virtual smooth scrolling on desktop devices with fine pointers (mouse wheel).
+    // Touch/mobile devices have native hardware momentum inertia scrolling that must never be intercepted.
+    const isTouchOrMobile =
+      typeof window !== "undefined" &&
+      ("ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.innerWidth <= 768);
+
+    if (isTouchOrMobile) {
+      return;
+    }
+
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      touchMultiplier: 1.5,
+      syncTouch: false,
     });
 
     let animationFrameId;

@@ -452,26 +452,86 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .services-redesign {
-    padding: 80px 5% 90px 5%;
+    padding: 75px 5% 80px 5%;
+  }
+
+  .services-header {
+    margin-bottom: 2.8rem;
   }
 
   .services-title {
-    font-size: 2.3rem;
+    font-size: clamp(2rem, 7vw, 2.5rem);
+  }
+
+  .services-subtitle {
+    font-size: 0.95rem;
   }
 
   .service-bento-card {
-    padding: 26px 20px;
+    padding: 24px 20px;
     border-radius: 20px;
   }
 
   .workflow-container {
-    padding: 30px 20px;
+    padding: 28px 18px;
     border-radius: 22px;
+  }
+
+  .workflow-title {
+    font-size: 1.8rem;
+  }
+
+  .workflow-desc {
+    font-size: 0.95rem;
   }
 
   .workflow-steps-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 2.2rem;
+  }
+
+  .action-banner-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-redesign {
+    padding: 60px 4% 70px 4%;
+  }
+
+  .service-bento-card {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .service-card-title {
+    font-size: 1.25rem;
+  }
+
+  .service-icon-box {
+    width: 46px;
+    height: 46px;
+    font-size: 1.4rem;
+  }
+
+  .service-number {
+    font-size: 1.7rem;
+  }
+
+  .service-deliverables {
+    padding: 14px 14px;
+  }
+
+  .deliverable-item {
+    font-size: 0.82rem;
+  }
+
+  .workflow-step-card {
+    padding: 18px 14px;
   }
 }

@@ -75,7 +75,7 @@ function Footer() {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.15 }}
+        viewport={{ once: true, amount: 0.15 }}
       >
         {/* Top Centered Action Section */}
         <div className="footer-top-block">
@@ -122,7 +122,7 @@ function Footer() {
             className="footer-name-monolith"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             ANURAG

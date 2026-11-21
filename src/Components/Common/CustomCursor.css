@@ -51,7 +51,7 @@
   border-color: #22d3ee;
 }
 
-@media (pointer: coarse) {
+@media (pointer: coarse), (hover: none), (max-width: 868px) {
   .custom-cursor-dot,
   .custom-cursor-follower {
     display: none !important;

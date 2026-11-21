@@ -17,8 +17,6 @@ import {
   SiNpm,
   SiVite,
   SiFramer,
-  SiTypescript,
-  SiRedux,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import "./Skills.css";
@@ -114,26 +112,6 @@ const SKILLS_DATA = [
   },
   {
     id: 9,
-    name: "TypeScript Essentials",
-    category: "Core & Frameworks",
-    level: 84,
-    tag: "Type Safety",
-    desc: "Type Interfaces, Generics, Scalable Clean Codebases",
-    icon: <SiTypescript />,
-    accent: "#3178c6",
-  },
-  {
-    id: 10,
-    name: "Redux & State",
-    category: "Core & Frameworks",
-    level: 86,
-    tag: "Architecture",
-    desc: "Context API, Redux Toolkit, Centralized State Flow",
-    icon: <SiRedux />,
-    accent: "#764abc",
-  },
-  {
-    id: 11,
     name: "VS Code & DevTools",
     category: "Build Tools & Workflow",
     level: 92,
@@ -143,7 +121,7 @@ const SKILLS_DATA = [
     accent: "#007acc",
   },
   {
-    id: 12,
+    id: 10,
     name: "NPM & Ecosystem",
     category: "Build Tools & Workflow",
     level: 88,
@@ -252,7 +230,7 @@ function Skills() {
             className="skills-eyebrow"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             <span className="eyebrow-code">&lt;/&gt;</span>
@@ -263,7 +241,7 @@ function Skills() {
             className="skills-title"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
           >
             Frontend Skills <span className="gradient-accent">&</span> Stack
@@ -273,7 +251,7 @@ function Skills() {
             className="skills-subtitle"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
           >
             Engineered with modern frontend standards: blazing-fast load speeds,
@@ -285,7 +263,7 @@ function Skills() {
             className="category-filter-bar"
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {CATEGORIES.map((cat) => {
@@ -323,7 +301,7 @@ function Skills() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.1 }}
           style={{ y: yParallax }}
         >
           <AnimatePresence mode="popLayout">
@@ -379,7 +357,7 @@ function Skills() {
                       className="fluency-fill"
                       initial={{ width: 0 }}
                       whileInView={{ width: `${skill.level}%` }}
-                      viewport={{ once: false }}
+                      viewport={{ once: true }}
                       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                       style={{
                         background: `linear-gradient(90deg, ${skill.accent}aa, ${skill.accent})`,
@@ -409,7 +387,7 @@ function Skills() {
                 className="pillar-card"
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.6, delay: pillar.id * 0.1 }}
                 whileHover={{ y: -5 }}
               >
